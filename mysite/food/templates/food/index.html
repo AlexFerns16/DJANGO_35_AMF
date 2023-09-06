@@ -9,7 +9,13 @@
     <h1>This is an index page</h1>
 
     {% for item in itemlist %}
-        {{ item }}
+
+        <ul>
+            <li>
+                {{ item }}
+            </li>
+        </ul>
+        
     {% endfor %}
 </body>
 </html>
