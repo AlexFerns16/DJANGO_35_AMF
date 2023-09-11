@@ -1,3 +1,5 @@
+{% extends 'food/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+    {% block body %}
+
     <h1>This is an index page</h1>
 
     {% for item in itemlist %}
@@ -19,5 +23,7 @@
         </ul>
         
     {% endfor %}
+
+    {% endblock %}
 </body>
 </html>
