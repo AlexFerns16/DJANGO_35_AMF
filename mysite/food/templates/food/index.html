@@ -12,7 +12,7 @@
 
     {% for item in itemlist %}
         
-        <div class="row mb-5">
+        <div class="row mb-3">
             <div class="col-md-3 offset-md-2">
                 <img 
                     src="{{ item.item_image }}"
@@ -23,13 +23,50 @@
             </div>
 
             <div class="col-md-4">
-                <h3>{{ item.item_name }}</h3>
-                <h3>{{ item.item_desc }}</h3>
-                <h3>{{ item.item_price }}</h3>
+                <h3
+                    style="font-size: 1.5rem;"
+                >
+                    {{ item.item_name }}
+                </h3>
+
+                <h5
+                    style="
+                        font-style:italic;
+                        font-size:1rem
+                    "
+                >
+                    {{ item.item_desc | truncatewords:6 }}
+                </h5>
+
+                <h6>
+                    ${{ item.item_price }}
+                </h6>
+
+                <h6
+                    style="
+                        font-style: italic;
+                    "
+                >
+                    added for: 
+                </h6>
+
+                <h6
+                    style="
+                        font-style: italic;
+                    "
+                >
+                    added by superuser: 
+                </h6>
             </div>
 
             <div class="col-md-3">
-                
+                <a
+                    href="{% url 'food:detail' item.id %}"
+                    style="width:100px"
+                    class="btn btn-success"
+                >
+                    Details
+                </a>
             </div>
         </div>
         
