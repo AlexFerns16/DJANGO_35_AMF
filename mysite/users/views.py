@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from users.forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -72,5 +73,6 @@ def logout_view(request):
     return redirect('food:index')
 
 
+@login_required
 def profilepage(request):
     return render(request, 'users/profile.html')
