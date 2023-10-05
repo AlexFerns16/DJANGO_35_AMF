@@ -4,5 +4,7 @@
 
 <span>{{ user.first_name }}</span>
 <span>{{ user.last_name }}</span>
+<p>{{ user.profile.location }}</p>
+<img height="100px" width="100px" src="{{ user.profile.image.url }}">
 
 {% endblock %}
