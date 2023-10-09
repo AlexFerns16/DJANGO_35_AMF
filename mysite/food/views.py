@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from food.models import Item
 from food.forms import ItemForm
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 # -------------------------------------------------------------------------------
@@ -12,6 +13,7 @@ from django.views.generic.list import ListView
 # -------------------------------------------------------------------------------
 
 def index(request):
+    
     itemlist = Item.objects.all()
 
     context = {
@@ -35,6 +37,7 @@ class IndexClassView(ListView):
 # -------------------------------------------------------------------------------
 
 def detail(request, item_id):
+    
     item = Item.objects.get(pk=item_id)
 
     context = {
@@ -44,10 +47,21 @@ def detail(request, item_id):
     return render(request, 'food/detail.html', context)
 
 
+# class based detail view
+# -------------------------------------------------------------------------------
+
+class FoodDetail(DetailView):
+
+    model = Item
+    context_object_name = 'item'
+    template_name = 'food/detail.html'
+
+
 # function based create item view
 # -------------------------------------------------------------------------------
 
 def create_item(request):
+    
     form = ItemForm(request.POST or None)
 
     if form.is_valid():
@@ -65,6 +79,7 @@ def create_item(request):
 # -------------------------------------------------------------------------------
 
 def update_item(request, id):
+    
     item = Item.objects.get(pk=id)
     form = ItemForm(request.POST or None, instance=item)
 
@@ -83,6 +98,7 @@ def update_item(request, id):
 # -------------------------------------------------------------------------------
 
 def delete_item(request, id):
+    
     item = Item.objects.get(pk=id)
 
     context = {
