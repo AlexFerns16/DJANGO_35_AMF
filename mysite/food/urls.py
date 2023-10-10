@@ -23,7 +23,11 @@ urlpatterns = [
 
     # function based create item view
     # -------------------------------------------------------------------------------
-    path('add/', views.create_item, name='create_item'),
+    # path('add/', views.create_item, name='create_item'),
+
+    # class based create item view
+    # -------------------------------------------------------------------------------
+    path('add/', views.CreateItem.as_view(), name='create_item'),
 
     # function based update item view
     # -------------------------------------------------------------------------------
