@@ -2,9 +2,35 @@
 
 {% block body %}
 
-<span>{{ user.first_name }}</span>
-<span>{{ user.last_name }}</span>
-<p>{{ user.profile.location }}</p>
-<img height="100px" width="100px" src="{{ user.profile.image.url }}">
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Profile
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="offset-md-1">
+                            <img style="margin-bottom: 15px;" height="100px" width="100px" src="{{ user.profile.image.url }}">
+                        </div>
+                        <div style="margin-top: 20px;" class="offset-md-2">
+                            <span>{{ user.first_name }}</span>
+                            <span>{{ user.last_name }}</span><br>
+                            <span>{{ user.email }}</span>
+                            <p>{{ user.profile.location }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
 
 {% endblock %}
