@@ -7,11 +7,11 @@ urlpatterns = [
 
     # function based index view
     # -------------------------------------------------------------------------------
-    # path('home/', views.index, name='index'),
+    path('home/', views.index, name='index'),
 
     # class based index view
     # -------------------------------------------------------------------------------
-    path('home/', views.IndexClassView.as_view(), name='index'),
+    # path('home/', views.IndexClassView.as_view(), name='index'),
 
     # function based detail view
     # -------------------------------------------------------------------------------
