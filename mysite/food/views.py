@@ -127,6 +127,16 @@ def update_item(request, id):
 
     if form.is_valid():
         form.save()
+
+        Obj_History = History(
+            user_name = request.user.username,
+            prod_ref = form.instance.prod_code,
+            item_name = request.POST.get('item_name'),      # form.instance.item_name
+            op_type = 'Updated'
+        )
+
+        Obj_History.save()
+
         return redirect('food:index')
 
     return render(request, 'food/item-form.html', context)
