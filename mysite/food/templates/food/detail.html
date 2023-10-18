@@ -106,57 +106,65 @@
 </div>
 
 
-{% for obj in hist %}
+{% if user.is_authenticated %}
 
-    <div
-        class="row mb-1">
+    {% if user.profile.user_type == 'Rest' or user.profile.user_type == 'Admin' %}
 
-        <div
-            class="col-md-8
-                offset-md-2
-                bg-danger
-                text-white">
+        {% for obj in hist %}
+
+            <div
+                class="row mb-1">
 
                 <div
-                    class="row">
+                    class="col-md-8
+                        offset-md-2
+                        bg-danger
+                        text-white">
 
-                    <div 
-                        class="col-md-3 
-                            text-left">
+                        <div
+                            class="row">
 
-                        {{ obj.user_name }}
-                    </div>
+                            <div 
+                                class="col-md-3 
+                                    text-left">
 
-                    <div 
-                        class="col-md-3 
-                            text-left">
+                                {{ obj.user_name }}
+                            </div>
 
-                        {{ obj.prod_ref }}
-                    </div>
+                            <div 
+                                class="col-md-3 
+                                    text-left">
 
-                    <div 
-                        class="col-md-3 
-                            text-left">
+                                {{ obj.prod_ref }}
+                            </div>
 
-                        {{ obj.item_name }}
-                    </div>
+                            <div 
+                                class="col-md-3 
+                                    text-left">
 
-                    <div 
-                        class="col-md-3 
-                            text-left">
+                                {{ obj.item_name }}
+                            </div>
 
-                        {{ obj.op_type }}
-                    </div>
+                            <div 
+                                class="col-md-3 
+                                    text-left">
+
+                                {{ obj.op_type }}
+                            </div>
+                        </div>
                 </div>
-        </div>
 
-        <div
-            class="col-md-2">
-            
-        </div>
+                <div
+                    class="col-md-2">
+                    
+                </div>
 
-    </div>
+            </div>
 
-{% endfor %}
+        {% endfor %}
+
+    {% endif %}
+
+{% endif %}
 
 {% endblock %}
