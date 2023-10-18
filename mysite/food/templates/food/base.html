@@ -18,11 +18,21 @@
         </a>
 
         <div class="navbar">
-            {% if user.is_authenticated %}
-
+            {% if user.is_superuser %}
+                
                 <a href="{% url 'food:create_item' %}" class="nav-item nav-link btn btn-dark">
                     Add Item
                 </a>
+
+                <a href="{% url 'profile' %}" class="nav-item nav-link btn btn-dark">
+                    Profile
+                </a>
+                
+                <a href="{% url 'logout' %}" class="nav-item nav-link btn btn-dark">
+                    Logout
+                </a>
+
+            {% elif user.is_authenticated %}
 
                 <a href="{% url 'profile' %}" class="nav-item nav-link btn btn-dark">
                     Profile
