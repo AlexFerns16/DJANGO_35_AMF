@@ -105,4 +105,58 @@
     </div>
 </div>
 
+
+{% for obj in hist %}
+
+    <div
+        class="row mb-1">
+
+        <div
+            class="col-md-8
+                offset-md-2
+                bg-danger
+                text-white">
+
+                <div
+                    class="row">
+
+                    <div 
+                        class="col-md-3 
+                            text-left">
+
+                        {{ obj.user_name }}
+                    </div>
+
+                    <div 
+                        class="col-md-3 
+                            text-left">
+
+                        {{ obj.prod_ref }}
+                    </div>
+
+                    <div 
+                        class="col-md-3 
+                            text-left">
+
+                        {{ obj.item_name }}
+                    </div>
+
+                    <div 
+                        class="col-md-3 
+                            text-left">
+
+                        {{ obj.op_type }}
+                    </div>
+                </div>
+        </div>
+
+        <div
+            class="col-md-2">
+            
+        </div>
+
+    </div>
+
+{% endfor %}
+
 {% endblock %}

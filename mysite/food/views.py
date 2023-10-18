@@ -53,8 +53,13 @@ def detail(request, item_id):
     
     item = Item.objects.get(pk=item_id)
 
+    hist = History.objects.filter(
+        prod_ref = item.prod_code
+    )
+
     context = {
-        'item':item
+        'item':item,
+        'hist':hist
     }
 
     return render(request, 'food/detail.html', context)
