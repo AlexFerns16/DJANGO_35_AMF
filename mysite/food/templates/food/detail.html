@@ -85,7 +85,7 @@
         {% elif user.is_authenticated and user.profile.user_type == 'Cust' %}
 
             <a
-                href="#"
+                href="{% url 'users:orders' item.id item.prod_code user.username %}"
                 style="width:80px"
                 class="btn btn-warning"
             >

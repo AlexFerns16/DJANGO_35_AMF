@@ -1,0 +1,36 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+<form method="POST">
+    
+    {% csrf_token %}
+
+    <p>
+        Are you sure you want to confirm the order for <b>product {{ pdcd }}</b> by <b>{{ user }}</b>
+    </p>
+
+    <label 
+        for="qty">
+
+        Enter Quantity: 
+    </label>
+    
+    <br>
+    
+    <input 
+        id="qty" 
+        name="qty" 
+        type="number" 
+        value="1">
+
+    <button 
+        class="btn btn-danger btn-sm"
+        type="submit">
+
+        Confirm
+    </button>
+
+</form>
+
+{% endblock %}
