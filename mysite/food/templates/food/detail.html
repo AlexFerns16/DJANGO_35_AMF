@@ -108,6 +108,8 @@
 
 {% if user.is_authenticated %}
 
+    <!-- red -->
+    
     {% if user.profile.user_type == 'Rest' or user.profile.user_type == 'Admin' %}
 
         {% for obj in hist %}
