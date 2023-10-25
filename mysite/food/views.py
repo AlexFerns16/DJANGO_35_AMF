@@ -58,7 +58,18 @@ def detail(request, item_id):
         prod_ref = item.prod_code
     )
 
-    Obj_CusOrd = CusOrders.objects.all()
+    # restaurant and admin
+    if request.user.profile.user_type == 'Rest' or request.user.profile.user_type == 'Admin':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code
+        )
+
+    # customer
+    elif request.user.profile.user_type == 'Cust':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code,
+            user = request.user.username
+        )
 
     context = {
         'item':item,
