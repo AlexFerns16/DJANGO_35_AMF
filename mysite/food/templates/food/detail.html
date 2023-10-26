@@ -187,31 +187,59 @@
                             class="row">
 
                             <div 
-                                class="col-md-3 
+                                class="col-md-2 
                                     text-left">
 
                                 {{ obj.order_id }}
                             </div>
 
                             <div 
-                                class="col-md-3 
+                                class="col-md-2 
                                     text-left">
 
                                 {{ obj.prod_code }}
                             </div>
 
                             <div 
-                                class="col-md-3 
+                                class="col-md-2 
                                     text-left">
 
                                 {{ obj.quantity }}
                             </div>
 
                             <div 
-                                class="col-md-3 
+                                class="col-md-2 
                                     text-left">
 
                                 {{ obj.user }}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if user.profile.user_type == 'Cust' %}
+                                    <a
+                                        class="btn btn-warning btn-sm"
+                                        href="#">
+
+                                        Edit Qty
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if user.profile.user_type == 'Cust' %}
+                                    <a
+                                        class="btn btn-primary btn-sm"
+                                        href="#">
+                                        
+                                        Buy Now
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                 </div>
