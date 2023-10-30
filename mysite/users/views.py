@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from users.models import CusOrders
+from users.forms import CusOrdersUpd
 
 # Create your views here.
 
@@ -99,3 +100,19 @@ def Orders(request, id, pdcd, user):
         return redirect('food:detail', item_id=id)
 
     return render(request, 'users/orders.html', context)
+
+
+def update_orders(request, id, upd_order_id):
+
+    coo = CusOrders.objects.get(order_id=upd_order_id)
+    form = CusOrdersUpd(request.POST or None, instance=coo)
+
+    context = {
+        'form':form
+    }
+
+    if form.is_valid():
+        form.save()
+        return redirect('food:detail', item_id=id)
+
+    return render(request, 'users/orders_upd.html', context)
