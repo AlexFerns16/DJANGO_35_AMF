@@ -1,1 +1,31 @@
-{{ form }}
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <div class="card-title">
+                        Update Orders
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <br><label>Quantity: </label><br>
+                        {{ form.quantity }}
+                    
+                        <button class="btn btn-danger btn-sm" type="submit">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
