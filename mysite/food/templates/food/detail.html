@@ -255,6 +255,109 @@
 
     {% endif %}
 
+
+    <!-- add feedback and ratings button -->
+
+    {% if user.profile.user_type == 'Cust' %}
+        <a class="btn btn-dark offset-md-5 mb-2" href="{% url 'users:CusRatFeed' item.id item.prod_code %}">
+            Add Ratings and Feedback
+        </a>
+    {% endif %}
+
+    <!-- blue -->
+    
+    {% if user.profile.user_type == 'Rest' or user.profile.user_type == 'Cust' or user.profile.user_type == 'Admin' %}
+
+        {% for obj in crf %}
+
+            <div
+                class="row mb-1">
+
+                <div
+                    class="col-md-8
+                        offset-md-2
+                        bg-info
+                        text-white">
+
+                        <div
+                            class="row">
+
+                            <div 
+                                class="col-md-1 
+                                    text-left">
+
+                                {{ obj.prod_code }}
+                            </div>
+
+                            <div 
+                                class="col-md-1 
+                                    text-left">
+
+                                {{ obj.ratings }}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {{ obj.feedback }}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {{ obj.username }}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {{ obj.user_type }}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if obj.username == user.username %}
+                                    <a
+                                        class="btn btn-warning btn-sm"
+                                        href="#">
+
+                                        Edit
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                            <div 
+                                class="col-md-2 
+                                    text-left">
+
+                                {% if obj.username == user.username %}
+                                    <a
+                                        class="btn btn-primary btn-sm"
+                                        href="#">
+                                        
+                                        Delete
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                </div>
+
+                <div
+                    class="col-md-2">
+                    
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
 {% endif %}
 
 {% endblock %}
