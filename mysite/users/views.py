@@ -4,7 +4,7 @@ from users.forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from users.models import CusOrders
+from users.models import CusOrders, CusRatingFeedback
 from users.forms import CusOrdersUpd, CusRatFeedForm
 
 # Create your views here.
@@ -136,3 +136,19 @@ def CusRatFeed(request, it_id, pc):
         return redirect('food:detail', item_id=it_id)
 
     return render(request, 'users/item-form.html', context)
+
+
+def update_crf(request, details_id, crf_id):
+    
+    crfo = CusRatingFeedback.objects.get(pk=crf_id)
+    form = CusRatFeedForm(request.POST or None, instance=crfo)
+
+    context = {
+        'form':form
+    }
+
+    if form.is_valid():
+        form.save()
+        return redirect('food:detail', item_id=details_id)
+
+    return render(request, 'users/crf_upd.html', context)

@@ -324,7 +324,7 @@
                                 {% if obj.username == user.username %}
                                     <a
                                         class="btn btn-warning btn-sm"
-                                        href="#">
+                                        href="{% url 'users:upd_crf' item.id obj.id %}">
 
                                         Edit
                                     </a>
