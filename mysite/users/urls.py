@@ -15,4 +15,7 @@ urlpatterns = [
 
     # updating customer ratings and feedbacks
     path('crf_upd/<int:details_id>/<int:crf_id>/', views.update_crf, name='upd_crf'),
+
+    # deleting customer ratings and feedbacks
+    path('del_crf/<int:details_id>/<int:crf_id>/', views.delete_crf, name='del_crf'),
 ]
