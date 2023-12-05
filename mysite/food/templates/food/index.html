@@ -78,6 +78,37 @@
         
     {% endfor %}
 
+    <!-- start code for pagination -->
+
+    {% if itemlist.has_previous %}
+        
+        <a href="?page=1">
+            First
+        </a>
+
+        <a href="?page={{ itemlist.previous_page_number }}">
+            Previous
+        </a>
+
+    {% endif %}
+
+    <!-- current page -->
+    Page: {{ itemlist.number }} of {{ itemlist.paginator.num_pages }}
+
+    {% if itemlist.has_next %}
+
+        <a href="?page={{ itemlist.next_page_number }}">
+            Next
+        </a>
+
+        <a href="?page={{ itemlist.paginator.num_pages }}">
+            Last
+        </a>
+
+    {% endif %}
+
+    <!-- end code for pagination -->
+
     {% endblock %}
 </body>
 </html>
