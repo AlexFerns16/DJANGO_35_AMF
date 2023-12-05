@@ -18,6 +18,14 @@
             Exortillo
         </a>
 
+        <!-- for search functionality -->
+        <form action="{% url 'food:index' %}" method="GET">
+            {% csrf_token %}
+            <span><b style="color:white">Search: </b></span>
+            <input type="search" name="item_name">
+            <button type="submit">Search</button>
+        </form>
+
         <div class="navbar">
             {% if user.is_superuser %}
                 
